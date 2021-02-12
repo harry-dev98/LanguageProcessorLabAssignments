@@ -25,7 +25,7 @@ kill return 0;
    printf("%s", yytext);
 }
 
-[+\-\*\/\(\)] {
+[+\-\*\/\(\)\^] {
    char op=yytext[0];
    if(isEmpty() || op=='(') {
       push(op);
@@ -94,6 +94,8 @@ int precedenceOrder(char c){
          return 2;
       case '/':
          return 2;
+      case '^':
+         return 3;
       default: 
          return -1;
    }
